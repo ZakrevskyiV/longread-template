@@ -1,0 +1,415 @@
+@font-face {
+font-family:"SkolarSans";
+src:url("http://docs.rferl.org/Infographics/sources/fonts/SkolarSansLatnCyrl-RG.woff");
+}
+@font-face {
+font-family: "Skolar";
+src: url("http://docs.rferl.org/Infographics/sources/fonts/SkolarLatnCyrl-Lt.woff");
+}
+@font-face {
+font-family: "SkolarSansLight";
+src:url("http://docs.rferl.org/Infographics/sources/fonts/SkolarSansLatnCyrl-El.woff");
+}
+html,body,div,ul,li,a,p,section,footer,header,blockquote,span,h1,h2,h3,h4,h5,h6 {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+     text-decoration: none;
+}
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+body {
+     overflow: hidden;
+}
+body.in-view {
+     overflow: auto;
+}
+@keyframes bounce {
+     0%   {-moz-transform: translateY(0);
+     -ms-transform: translateY(0);
+     -webkit-transform: translateY(0);
+     transform: translateY(0);}   
+     50%  {-moz-transform: translateY(15px);
+     -ms-transform: translateY(15px);
+     -webkit-transform: translateY(15px);
+     transform: translateY(15px);}   
+     100% {-moz-transform: translateY(0);
+     -ms-transform: translateY(0);
+     -webkit-transform: translateY(0);
+     transform: translateY(0);}
+     }
+.bounce {
+     animation: bounce 1.4s infinite;
+}
+#loader-wrapper {
+     display: ;   
+     z-index: 9999;
+     width: 100%;
+     height: 100vh;
+     position: absolute;
+     background-color: #151617;
+     transition: all 0.5s ease-in-out 0.5s;
+}
+#loader-wrapper__logo {
+     position: fixed;
+     left: 50%;
+     top: 50%;
+     z-index: 1001;
+     width: 50px;
+     height: auto;
+     margin: -35px -25px;
+}
+#loader-wrapper__logo img {
+     width: 100%;
+     height: auto;
+}
+#loader-wrapper.loaded {
+     transform: translateY(-100%);
+}
+#overlay {
+     display: none; 
+     position: fixed;
+     width: 100%;
+     height: 100vh;
+     background-color: rgba(21,22,23,0.8);
+     z-index: 1001;
+}
+#image-clicked { 
+     display: none;
+     cursor: pointer;   
+     position: fixed;
+     z-index: 1002;     
+     max-width: 90%;
+     height: auto;
+}
+#image-clicked img {
+     max-width: 100%;
+     max-height: 100%;
+     height: auto;
+}
+.back-to-top {          
+     position: fixed;
+     height: 84px;
+     right: 0;
+     bottom: 0;
+     z-index: 999;   
+     font-size: 3em;          
+     opacity: 0;  
+     transition: all 0.3s ease-in-out;    
+}
+.back-to-top__triangle {
+     fill: #151617;
+     transition: all 0.3s ease-in-out; 
+}
+.back-to-top__triangle-arrow {
+     position: absolute;
+     color: white;
+     right: 10px;
+     bottom: 0px;     
+}
+.back-to-top:hover .back-to-top__triangle {
+     fill: #BB5402;
+     width: 84px;
+     height: 84px;  
+}
+.back-to-top.in-view {
+     cursor: pointer;     
+     opacity: 1;
+}
+.header {
+     position: fixed;
+     z-index: 998;
+     width: 100%;
+     height: 65px;
+     background: transparent;
+     transition: background-color 0.3s ease-in-out;
+}
+.header.scrolled {     
+     background-color: #151617;     
+}
+.header__logo {
+     position: fixed;
+     z-index: 999;
+     width: auto;
+     height: auto;
+     top: 10px;
+     left: 15px;
+}
+.header__logo img {
+     width: 100px;
+     height: auto;
+}
+.header__share {   
+     z-index: 999;  
+     position: fixed;
+     top: 0;
+     right: 0;
+}
+.header__share li {
+     display: inline-block;          
+}
+.header__share li a {
+     color: white;         
+     font-size: 2em;   
+     transition: all 0.3s ease-in-out;
+     position: relative;
+     top: 16px;    
+}
+.header__share-count {
+     font-size: 0.5em;
+}
+.social-media-button { 
+     width: 63px;
+     height: 65px;
+     cursor: pointer;  
+     text-align: center;     
+     background-color: transparent;
+     transition: all 0.3s ease-in-out;     
+}
+.social-media-button:hover .fa-facebook-official, 
+.social-media-button:hover .fa-twitter-square, 
+.social-media-button:hover .fa-instagram, 
+.social-media-button:hover .fa-youtube-square {
+     color: white;
+} 
+.facebook {
+     border-left: 3px solid #3b5998;
+     margin-right: -4px;
+}
+.twitter {
+     border-left: 3px solid #1da1f2;
+}
+.twitter-footer {
+     border-left: 3px solid #1da1f2;
+     margin-right: -4px;
+}
+.instagram {
+     border-left: 3px solid #f77737;
+     margin-right: -5px;
+}
+.youtube {
+     border-left: 3px solid #cd201f;
+     margin-right: -4px;   
+}
+.facebook:hover {
+     background-color: #3b5998;          
+}
+.twitter:hover {
+     background-color: #1da1f2;     
+}
+.instagram:hover {
+     background-color: #f77737;
+}
+.youtube:hover {
+     background-color: #cd201f;    
+}
+.progress-bar {
+     position: fixed;
+     z-index: 999;
+     top: 62px;
+     height: 3px;
+     width: 0;
+     background-color: #BB5402;
+}
+#section-intro { 
+     position: relative;    
+     z-index: 1;   
+     width: 100%;
+     height: 100vh;        
+     background-image: radial-gradient(at center center, rgba(0, 0, 0, 0.2) 5%, rgba(0, 0, 0, 0.6) 100%), url("http://gdb.rferl.org/942C6168-2E8D-4BE1-BB8C-4D7C291F5DEC_w1920.jpg");
+}
+.section-intro__wrapper {
+     position: absolute;      
+     width: 40%;
+     bottom: 40%;
+     right: 5%;       
+}
+.section-intro__title {     
+     font-size: 3.1em;
+     font-family: Skolar;
+     text-align: center;  
+     font-weight: normal;
+     line-height: 1em;
+     color: white;
+     margin: 10px auto;
+     transform: translateX(-100px);
+     transition: all 0.7s ease-in-out 0.3s; 
+     opacity: 0; 
+}
+.section-intro__author {
+     font-family: SkolarSansLight;
+     color: white;
+     font-weight: normal;
+     text-align: center;
+     font-size: 1.5em;
+     transform: translateY(20px);
+     transition: all 0.7s ease-in-out 0.7s; 
+     opacity: 0;
+}
+.section-intro__border {
+     height: 1px;
+     background-color: white;
+     margin: 20px auto;
+     width: 0;
+     transition: all 0.7s ease-in-out 1.2s; 
+}
+.section-intro__border.in-view {
+     width: 40%;
+}
+.section-intro__arrow {
+     position: absolute;
+     cursor: pointer;
+     bottom: 10%;
+     left: 50%;
+     margin-left: -25px;
+     transform: translateY(-40px);
+     transition: all 0.5s ease-in-out 1.5s; 
+     opacity: 0;
+}
+.section-intro__title.in-view {
+     transform: translateX(0px);
+     opacity: 1;
+}
+.section-intro__author.in-view {
+     transform: translateY(0px);
+     opacity: 1;     
+}
+.section-intro__arrow.in-view {
+     transform: translateY(0px);
+     opacity: 1;     
+}
+.section__wrapper {
+     width: 40%;
+     margin: 40px auto;
+}
+.section__wrapper p {
+     font-family: Skolar;
+     font-weight: normal;
+     font-size: 1.4em;
+     margin: 10px 0;
+}
+.all-wrapper {
+     position: relative;    
+     z-index: 1;
+}
+section {
+     width: 100%;
+     background: #f2f2f2;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-attachment: fixed;   
+     background-size: cover;
+     padding: 30px 0;         
+}
+section.reverse {     
+     background: #151617;
+     color: white;   
+}
+.section__video-wrapper, .section__image-wrapper {
+     width: 60%;
+     height: auto;
+     margin: auto;
+}
+.section__video-wrapper video {
+     max-width: 100%;
+     height: auto;     
+}
+.section__image-wrapper img {
+     max-width: 100%;
+     margin: auto;     
+     height: auto;
+     cursor: pointer;
+}
+.section-break {
+     width: 100%;
+     height: 100vh;
+     background-repeat: no-repeat;
+     background-position: center;
+     background-attachment: fixed;   
+     background-size: cover;      
+}
+.chapter-description {
+     position: relative;
+     width: 60%;
+     color: white;
+     font-family: Skolar;
+     font-size: 3.5em;
+     text-align: center;
+     top: 40%;
+     left: 10%;
+}
+.break1 {
+     background-image: radial-gradient(at center center, rgba(0, 0, 0, 0.2) 5%, rgba(0, 0, 0, 0.5) 100%), url("http://gdb.rferl.org/29BAC5BE-30BA-4F0F-9027-1CA5B4C1D6E9_w1920.jpg");     
+}
+.break2 {
+     background-image: radial-gradient(at center center, rgba(0, 0, 0, 0.2) 5%, rgba(0, 0, 0, 0.5) 100%), url("http://gdb.rferl.org/35D35D01-C34A-48E9-8E86-7965BDBFE38C_w1920.jpg");
+}
+.break1.scrolled {
+     background-image: radial-gradient(at center center, rgba(0, 0, 0, 0.4) 5%, rgba(0, 0, 0, 0.7) 100%), url("http://gdb.rferl.org/29BAC5BE-30BA-4F0F-9027-1CA5B4C1D6E9_w1920.jpg");
+}
+.break2.scrolled {
+     background-image: radial-gradient(at center center, rgba(0, 0, 0, 0.4) 5%, rgba(0, 0, 0, 0.7) 100%), url("http://gdb.rferl.org/35D35D01-C34A-48E9-8E86-7965BDBFE38C_w1920.jpg");
+}
+.blockquote-left {
+     position: absolute;
+     left: 5%;
+     font-size: 1.6em;     
+     font-weight: bold;
+     font-family: SkolarSansLight;
+     background: #151617;
+     border-radius: 10px;
+     color: white;
+     float: left;
+     width: 15%;
+     padding: 20px;       
+}
+.reverse .blockquote-left {     
+     background: #f2f2f2;     
+     color: black;         
+}
+
+footer {
+     position: fixed;
+     bottom: 0;
+     width: 100%;
+     z-index: 0;
+     background-color: #f2f2f2;     
+     padding: 4em 0 2em 0;   
+}
+.footer-wrapper {     
+     width: 60%;
+     margin: auto;   
+     text-align: center;
+     font-family: SkolarSansLight;     
+     color: black;
+}
+.footer-wrapper h2 {     
+     font-weight: bold;
+     font-size: 1.5em;
+}
+.footer-wrapper img {
+     width: 50px;
+     margin-top: 20px;
+}
+.footer-wrapper ul {
+     margin: 25px 0;
+     list-style: none;
+}
+.footer-wrapper ul li {
+     display: inline-block;       
+}
+.footer-wrapper ul li a {
+     font-size: 3em;
+     color: #373E43; 
+     transition: all 0.3s ease-in-out;
+     text-decoration: none;
+     position: relative;
+     top: 8px; 
+}
