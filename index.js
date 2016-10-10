@@ -7,7 +7,7 @@ function documentReady () {
     setTimeout(function(){$("#loader-wrapper").addClass("loaded")}, 100);
 	sections = $("section");    
 	arrow_offset = $(sections[1]).offset().top - 65; // set offset from second (after intro) section
-	$("body, .section-intro__title, .section-intro__author, .section-intro__border, .section-intro__arrow").addClass("in-view"); // add animations after DOM load	
+	$("body, .section-intro__title, .section-intro__author, .section-intro__border, .section-intro__arrow, .blockquote-left, .blockquote-border").addClass("in-view"); // add animations after DOM load	
 	setTimeout(function() {
 		$(".section-intro__arrow").addClass("bounce");	
 	},2000); // set arrow bounce
@@ -23,7 +23,7 @@ function documentReady () {
             scrollTop: 0
         }, 1500); // end of animate for scroll to the beginning
     }); //end of click
-    footer_height = $("footer").outerHeight(true) + 70; // get footer height (with padding+margin);
+    footer_height = $("footer").outerHeight(true) + 75; // get footer height (with padding+margin);
     $(sections).last().css("margin-bottom", footer_height); // setting last section margin for footer scroll correctly
     $(".section__image-wrapper img").click(function(){
         ww = $(window).width();
@@ -72,8 +72,16 @@ function documentResized () {
 
 } // end of documentResized function
 
-function setParameters () {   
-/*
+function setParameters () {    
+    blockquote_wrapper = $(".blockquote-wrapper");   
+    for (i=0;i<blockquote_wrapper.length; i++) {
+        blockquotes_width = $(blockquotes_left[i]).width();
+        console.log(blockquotes_width);
+        blockquotes_height = $(blockquotes_left[i]).height();
+        console.log(blockquotes_height);
+        $(blockquote_wrapper[i]).css({"width": $(blockquotes_left[i]).width(),"height": $(blockquotes_left[i]).height()});   
+    }
+/*  
 	section_intro_w = $(".section-intro__wrapper").width();
 	section_intro_h = $(".section-intro__wrapper").height();
 	section_intro_top = (wh - section_intro_h)/2 - (section_intro_h/2);
@@ -81,6 +89,9 @@ function setParameters () {
 	$(".section-intro__wrapper").css({"left": section_intro_left, "top": section_intro_top});
 */
     }	
+blockquotes_left = $(".blockquote-left");
+blockquote_border = $('<div class="blockquote-border"></div>');
+$(blockquotes_left).parent().prepend(blockquote_border);
 
 
 
